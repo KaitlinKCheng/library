@@ -1,0 +1,63 @@
+/* From Reset CSS
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strong, sub, sup, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+
+/* Additional Rules */
+
+*,
+*::before,
+*::after {
+    /* Apply consistent box-sizing */
+    box-sizing: border-box;
+}
+
+html {
+    /* Set default font size */
+    font-size: 16px;
+}
+
+body {
+    /* Set default font */
+    font: 1rem/1.5 Arial, Helvetica, sans-serif;
+    /* Set default text & background color */
+    color: #000;
+    background-color: #fff;
+}
+
+button,
+input,
+select,
+textarea {
+    /* Make form inputs inherit font properties */
+    font: inherit;
+}
+
+button, select,
+input[type="button"], input[type="checkbox"], input[type="color"],
+input[type="file"], input[type="image"], input[type="radio"],
+input[type="range"], input[type="reset"], input[type="submit"] {
+    /* Add pointer cursor for clickable items */
+    cursor: pointer;
+}
