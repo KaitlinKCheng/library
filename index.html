@@ -14,7 +14,8 @@
         <h1>Library</h1>
     </header>
     <main>
-        <form id="book-form">
+        <button id="add-book-btn" type="button">Add Book</button> <!-- For toggling form display -->
+        <form id="book-form" name="book-form">
             <label for="title">Title</label>
             <input id="title" type="text" name="title" placeholder="Untitled" required>
             <label for="author">Author</label>
@@ -23,8 +24,8 @@
             <input id="pages" type="number" name="pages" placeholder="0" required>
             <label for="read">Read</label>
             <input id="read" type="checkbox" name="read" value="read">
+            <button id="form-btn" type="submit">Add</button>
         </form>
-        <button id="add-book-btn" type="button">Add Book</button>
         <table id="library-table">
             <tr id="table-headers">
                 <th scope="col">Title</th>
