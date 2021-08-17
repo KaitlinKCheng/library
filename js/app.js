@@ -1,6 +1,9 @@
 /* GLOBAL VARIABLES */
 
 const form = document.getElementById('book-form');
+const table = document.getElementById('library-table');
+
+const bookAttribute = 'data-id'; // For associating DOM elements to books
 const myLibrary = [];
 
 /* SETUP */
@@ -41,8 +44,6 @@ function Book(title, author, pages, read) {
  * Iterates through the library and displays each stored book in the table.
  */
 function displayBooks() {
-    const table = document.getElementById('library-table');
-
     for (let i = 0; i < myLibrary.length; i++) {
         createBookRow(i);
     }
@@ -76,9 +77,8 @@ function addBookToLibrary(event) {
  * @param {number} index - The index of the book in the library to create a row for.
  */
 function createBookRow(index) {
-    const table = document.getElementById('library-table');
     const newRow = document.createElement('tr');
-    newRow.setAttribute('data-id', index);
+    newRow.setAttribute(bookAttribute, index);
 
     const titleData = document.createElement('td');
     titleData.textContent = `${myLibrary[index].title}`;
@@ -89,11 +89,30 @@ function createBookRow(index) {
     const readData = document.createElement('td');
     myLibrary[index].read ? readData.classList.add('read')
             : readData.classList.add('unread');
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('del-btn');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', deleteBookFromLibrary);
 
     newRow.appendChild(titleData);
     newRow.appendChild(authorData);
     newRow.appendChild(pagesData);
     newRow.appendChild(readData);
+    newRow.appendChild(deleteBtn);
 
     table.appendChild(newRow);
+}
+
+/**
+ * Deletes a given book from the table and the library using the row's data
+ * attribute.
+ *
+ * @param {Event} event - The event that occurred.
+ */
+function deleteBookFromLibrary(event) {
+    const bookRow = event.target.parentElement;
+    const bookId = bookRow.getAttribute(bookAttribute);
+
+    table.removeChild(bookRow);
+    myLibrary.splice(bookId, 1);
 }
