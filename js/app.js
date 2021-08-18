@@ -86,13 +86,21 @@ function createBookRow(index) {
     authorData.textContent = `${myLibrary[index].author}`;
     const pagesData = document.createElement('td');
     pagesData.textContent = `${myLibrary[index].pages}`;
+
     const readData = document.createElement('td');
-    myLibrary[index].read ? readData.classList.add('read')
-            : readData.classList.add('unread');
+    const readBtn = document.createElement('button');
+    myLibrary[index].read ? readBtn.classList.add('read')
+            : readBtn.classList.add('unread');
+    readBtn.addEventListener('click', toggleReadStatus);
+
+    const deleteData = document.createElement('td');
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('del-btn');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', deleteBookFromLibrary);
+
+    readData.appendChild(readBtn);
+    deleteData.appendChild(deleteBtn);
 
     newRow.appendChild(titleData);
     newRow.appendChild(authorData);
@@ -115,4 +123,19 @@ function deleteBookFromLibrary(event) {
 
     table.removeChild(bookRow);
     myLibrary.splice(bookId, 1);
+}
+
+/**
+ * Toggles the read status of the given book in the display and in the library.
+ *
+ * @param {Event} event - The event that occurred.
+ */
+function toggleReadStatus(event) {
+    const readBtn = event.target;
+    const bookId = event.target.parentElement.getAttribute(bookAttribute);
+
+    readBtn.classList.toggle('read');
+    readBtn.classList.toggle('unread');
+
+    myLibrary[+bookId].read = !(myLibrary[+bookId].read);
 }
