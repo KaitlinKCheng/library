@@ -17,6 +17,7 @@ setup();
  */
 function setup() {
     form.addEventListener('submit', addBookToLibrary);
+    document.getElementById('add-book-btn').addEventListener('click', toggleFormDisplay);
 
     displayBooks();
 }
@@ -138,4 +139,11 @@ function toggleReadStatus(event) {
     readBtn.classList.toggle('unread');
 
     myLibrary[+bookId].read = !(myLibrary[+bookId].read);
+}
+
+/**
+ * Toggles the form's display when the Add Book button is clicked.
+ */
+function toggleFormDisplay() {
+    form.classList.toggle('no-display');
 }
