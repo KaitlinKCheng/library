@@ -124,7 +124,7 @@ function createBookRow(index) {
  * @param {Event} event - The event that occurred.
  */
 function deleteBookFromLibrary(event) {
-    const bookRow = event.target.parentElement;
+    const bookRow = event.target.parentElement.parentElement;
     const bookId = bookRow.getAttribute(bookAttribute);
 
     table.removeChild(bookRow);
@@ -138,7 +138,7 @@ function deleteBookFromLibrary(event) {
  */
 function toggleReadStatus(event) {
     const readBtn = event.target;
-    const bookId = event.target.parentElement.getAttribute(bookAttribute);
+    const bookId = event.target.parentElement.parentElement.getAttribute(bookAttribute);
 
     readBtn.classList.toggle('read');
     readBtn.classList.toggle('unread');
