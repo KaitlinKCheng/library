@@ -1,0 +1,152 @@
+// Colors
+$accent-color: #54151c;
+$page-bg: #dfd6d7;
+$medium-bg: #d7cfcf;
+$dark-bg: #c9c2c2;
+
+// Fonts
+$main-font: 'Segoe UI', Arial, Helvetica, sans-serif;
+$title-font: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+
+
+// Mixins
+@mixin library-btn {
+    color: #fff;
+    background-color: $accent-color;
+    border: 4px solid #000;
+}
+
+@mixin status-btn {
+    width: 100px;
+    border: 3px solid #000;
+}
+
+
+/* General Classes */
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-display {
+    display: none;
+}
+
+.read {
+    @include status-btn();
+    color: #fff;
+    background-color: #15542d;
+
+    &::before {
+        content: 'Read';
+    }
+}
+
+.unread {
+    @include status-btn();
+    color: #fff;
+    background-color: #333;
+
+    &::before {
+        content: 'Unread';
+    }
+}
+
+.del-btn {
+    @include status-btn();
+    background-color: #fff;
+}
+
+
+/* Styles */
+
+body {
+    font-size: 1.1rem;
+    font-family: $main-font;
+    text-align: center;
+    background-color: $page-bg;
+}
+
+header {
+    width: 100%;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: $dark-bg;
+
+    > a,
+    > a:visited {
+        color: #000;
+    }
+
+    > h1 {
+        margin-bottom: 10px;
+        font-size: 3.2rem;
+        font-family: $title-font;
+    }
+}
+
+main > * {
+    margin-bottom: 40px;
+}
+
+#add-book-btn {
+    @include library-btn();
+    min-width: 150px;
+    height: 50px;
+}
+
+#book-form {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    background-color: $dark-bg;
+    border: 2px solid #000;
+
+    > * {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+}
+
+#form-btn {
+    @include library-btn();
+    height: 50px;
+    text-align: center;
+}
+
+#library-table {
+    min-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #000;
+    border-collapse: collapse;
+
+    tr:nth-child(even) {
+        background-color: $medium-bg;
+    }
+
+    tr:nth-child(odd) {
+        background-color: $dark-bg;
+    }
+
+    td {
+        height: 50px;
+        vertical-align: middle;
+    }
+}
+
+#table-headers > th {
+    font-size: 1.4rem;
+    font-family: $main-font;
+    font-weight: 600;
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+    border-collapse: collapse;
+}
