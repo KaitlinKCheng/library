@@ -19,6 +19,11 @@ function setup() {
     form.addEventListener('submit', addBookToLibrary);
     document.getElementById('add-book-btn').addEventListener('click', toggleFormDisplay);
 
+    // Start out with one book
+    if (myLibrary.length === 0) {
+        myLibrary.push(new Book('Untitled', 'Anonymous', 0, false));
+    }
+
     displayBooks();
 }
 
