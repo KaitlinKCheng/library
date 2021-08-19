@@ -107,7 +107,7 @@ function createBookRow(index) {
     newRow.appendChild(authorData);
     newRow.appendChild(pagesData);
     newRow.appendChild(readData);
-    newRow.appendChild(deleteBtn);
+    newRow.appendChild(deleteData);
 
     table.appendChild(newRow);
 }
